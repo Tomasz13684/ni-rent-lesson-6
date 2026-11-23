@@ -71,4 +71,9 @@ class Manager:
             )
         for tenant in tenants_in_apartment ] 
     
-    
+    def get_tax(self, year: int, month: int, tax_rate: float) -> int:
+        income = sum(
+            t.amount_pln for t in self.transfers
+            if t.settlement_year == year and t.settlement_month == month
+        )
+        return round(income * tax_rate)

@@ -1,0 +1,21 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\Tomek2406\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Tomek2406\Desktop\studia\sem 3\narzedzia_it\ni-rent-lesson-6
+collecting ... collected 13 items
+
+tests/test_complex_integration.py::test_apartment_costs PASSED           [  7%]
+tests/test_complex_integration.py::test_apartment_costs_with_optional_parameters PASSED [ 15%]
+tests/test_complex_integration.py::test_settlement_creation PASSED       [ 23%]
+tests/test_complex_integration.py::test_tenants_settlements_creation PASSED [ 30%]
+tests/test_functional.py::test_tenants_total_due_matches_apartment_costs PASSED [ 38%]
+tests/test_functional.py::test_get_tax PASSED                            [ 46%]
+tests/test_integration.py::test_load_data PASSED                         [ 53%]
+tests/test_integration.py::test_tenants_in_manager PASSED                [ 61%]
+tests/test_integration.py::test_if_tenants_have_valid_apartment_keys PASSED [ 69%]
+tests/test_unit.py::test_apartment_fields PASSED                         [ 76%]
+tests/test_unit.py::test_apartment_from_dict PASSED                      [ 84%]
+tests/test_unit.py::test_tenant_fields PASSED                            [ 92%]
+tests/test_unit.py::test_tenant_from_dict PASSED                         [100%]
+
+============================= 13 passed in 0.63s ==============================

@@ -1,3 +1,4 @@
+import sys
 from src.manager import Manager
 from src.models import Parameters
 
@@ -67,7 +68,27 @@ if __name__ == '__main__':
     parameters = Parameters()
     manager = Manager(parameters)
 
-    display_apartments(manager)
-    display_tenants(manager)
+    if len(sys.argv) >= 4:
+        apartment_key = sys.argv[1]
+        year = int(sys.argv[2])
+        month = int(sys.argv[3])
+
+        settlement = manager.get_settlement(apartment_key, year, month)
+        if settlement is None:
+            print(f"Nie znaleziono rozliczenia dla: {apartment_key}, {year}-{month}")
+        else:
+            print_section_header(f"ROZLICZENIE: {apartment_key.upper()} ({month:02d}/{year})")
+            print(f"Całkowity koszt mieszkania: {format_currency(settlement.total_due_pln)}")
+
+            tenants_settlements = manager.create_tenants_settlements(settlement)
+            if tenants_settlements:
+                print_subsection_header("Rozliczenia najemców")
+                for ts in tenants_settlements:
+                    print(f"   • {ts.tenant:<25} do zapłaty: {format_currency(ts.total_due_pln)}")
+            else:
+                print("   Brak przypisanych najemców w tym mieszkaniu.")
+    else:
+        display_apartments(manager)
+        display_tenants(manager)
     
     print(f"\n{'=' * 70}\n")
